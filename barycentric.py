@@ -1,10 +1,3 @@
-%matplotlib inline
-from matplotlib.patches import Polygon
-import matplotlib.pyplot as plt
-import numpy as np
-
-import barycentric
-
 def get_barycentric_coordinates(triangle_coordinates:np.ndarray, point_coordinates:np.ndarray)->np.ndarray:
     (x1,y1),(x2,y2),(x3,y3)=triangle_coordinates
     (x,y)=point_coordinates
