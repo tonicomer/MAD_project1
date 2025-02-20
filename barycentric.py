@@ -1,4 +1,9 @@
+%matplotlib inline
+from matplotlib.patches import Polygon
+import matplotlib.pyplot as plt
 import numpy as np
+
+import barycentric
 
 def get_barycentric_coordinates(triangle_coordinates:np.array, point_coordinates:np.ndarray)->np.ndarray:
     A = triangle_coordinates[:,0]
@@ -20,3 +25,7 @@ def get_barycentric_coordinates(triangle_coordinates:np.array, point_coordinates
     w = (dotv1*dotv2and3 - dotv1 * dotv1and3) / scale
     u = 1 - v - w
     return np.array([u, v, w])
+def get_cartesian_coordinates(triangle_coordinates:np.ndarray,barycentric_coordinates:np.ndarray):
+    x=triangle_coordinates[0,0]*barycentric_coordinates[0]+triangle_coordinates[0,1]*barycentric_coordinates[1]+triangle_coordinates[0,2]*barycentric_coordinates[2]
+    y=triangle_coordinates[1,0]*barycentric_coordinates[0]+triangle_coordinates[1,1]*barycentric_coordinates[1]+triangle_coordinates[1,2]*barycentric_coordinates[2]
+    return(x,y)
